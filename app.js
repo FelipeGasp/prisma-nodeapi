@@ -1,10 +1,13 @@
 import express from 'express';
 import { Prisma, PrismaClient } from '@prisma/client'
+import cors from 'cors';
+
 const prisma = new PrismaClient();  
 
 
 const app = express();
 app.use(express.json());
+app.use(cors())
 
 app.get("/tickets",async (request, response) =>{
     const allTickets = await prisma.ticket.findMany()
@@ -16,8 +19,8 @@ app.get("/tickets",async (request, response) =>{
 app.post("/tickets", async(request, response) => {
     await prisma.ticket.create({
         data:{
-            first_name: request.body.first_name,
-            last_name: request.body.last_name,
+            firstname: request.body.firstname,
+            lastname: request.body.lastname,
             email: request.body.email,
             gender: request.body.gender,
             subject: request.body.subject,  
@@ -41,8 +44,8 @@ app.put("/tickets/:id", async(request, response) => {
             id: id
         },
         data:{
-            first_name: request.body.first_name,
-            last_name: request.body.last_name,
+            firstname: request.body.firstname,
+            lastname: request.body.lastname,
             email: request.body.email,
             gender: request.body.gender,
             subject: request.body.subject,  
@@ -67,7 +70,7 @@ app.delete("/tickets/:id", async(request, response) => {
     
 })
 
-app.listen(3000);
+app.listen(8001);
 
 
 
