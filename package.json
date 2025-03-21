@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test test.mjs"
   },
   "keywords": [],
   "author": "",
@@ -12,8 +12,10 @@
   "description": "",
   "dependencies": {
     "@prisma/client": "^6.4.1",
+    "assert": "^2.1.0",
     "cors": "^2.8.5",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "test": "^3.3.0"
   },
   "devDependencies": {
     "prisma": "^6.4.1"
